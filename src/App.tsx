@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Fetching from "./components/Fetching";
+import MyCard from "./components/MyCard";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <h1>Star-Wars</h1>
       <>
         <Fetching></Fetching>
+        {/* <MyCard Characters={} */}
       </>
     </>
   );

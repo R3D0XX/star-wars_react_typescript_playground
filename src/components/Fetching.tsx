@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-interface CharacterType {
+export interface CharacterType {
   id: string;
   name: string;
   description: string;
@@ -8,34 +8,39 @@ interface CharacterType {
 }
 
 function Fetching() {
-  const [characters, setCharacters] = useState(null);
+  const [characters, setCharacters] = useState<CharacterType[]>([]);
   const [error, setError] = useState(false);
   const picUrl =
     "https://starwars-databank-server.vercel.app/api/v1/characters";
 
   const fetchCharacterPics = async () => {
-    const response = await fetch(picUrl);
-    const data = await response.json();
-    // console.log("data", data);
-    const characterList = data.data as CharacterType[];
-    console.log("characterList", characterList);
-    setCharacters[characterList];
+    try {
+      const response = await fetch(picUrl);
+      const data = await response.json();
+      // console.log("data", data);
+      const characterList = data.data as CharacterType[];
+      console.log("characterList", characterList);
+      setCharacters(characterList);
+    } catch (error) {
+      setError(true);
+      console.error("Error", error);
+    }
   };
+
   useEffect(() => {
     fetchCharacterPics();
   }, []);
 
   return (
     <div>
-      <h1>Characters</h1>
+      <h2>Characters</h2>
       {error ? (
-        <p> Loading Error.</p>
+        <p>Loading Error.</p>
       ) : (
         <ul>
-          {characters &&
-            characters.map((character, index) => (
-              <li key={index}>{character.name}</li>
-            ))}
+          {characters.map((character) => (
+            <li key={character.id}>{character.name}</li>
+          ))}
         </ul>
       )}
     </div>
