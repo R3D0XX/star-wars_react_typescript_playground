@@ -7,11 +7,12 @@ export interface CharacterType {
   image: string;
 }
 
-function Fetching() {
+function useFetch() {
   const [characters, setCharacters] = useState<CharacterType[]>([]);
   const [error, setError] = useState(false);
   const picUrl =
     "https://starwars-databank-server.vercel.app/api/v1/characters";
+  let testVaribale = "ABC";
 
   const fetchCharacterPics = async () => {
     try {
@@ -31,22 +32,12 @@ function Fetching() {
     fetchCharacterPics();
   }, []);
 
-  return {};
-
-  //   return (
-  //     <div>
-  //       <h2>Characters</h2>
-  //       {error ? (
-  //         <p>Loading Error.</p>
-  //       ) : (
-  //         <ul>
-  //           {characters.map((character) => (
-  //             <li key={character.id}>{character.name}</li>
-  //           ))}
-  //         </ul>
-  //       )}
-  //     </div>
-  //   );
+  // custom hook = returning object of variables instead of JSX (visible stuff)
+  return {
+    characters,
+    error,
+    testVaribale,
+  };
 }
 
-export default Fetching;
+export default useFetch;
