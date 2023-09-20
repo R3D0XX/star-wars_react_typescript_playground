@@ -32,7 +32,7 @@ function useFetch() {
     fetchCharacterPics();
   }, []);
 
-  // custom hook = returning object of variables instead of JSX (visible stuff)
+  //* custom hook = returning object of variables instead of JSX (visible stuff)
   return {
     characters,
     error,

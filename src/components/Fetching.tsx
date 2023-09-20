@@ -1,52 +1,17 @@
-import React, { useEffect, useState } from "react";
-
-export interface CharacterType {
-  id: string;
-  name: string;
-  description: string;
-  image: string;
-}
+import React from "react";
+import useCombinefetch from "../hooks/useCombinefetch";
 
 function Fetching() {
-  const [characters, setCharacters] = useState<CharacterType[]>([]);
-  const [error, setError] = useState(false);
-  const picUrl =
-    "https://starwars-databank-server.vercel.app/api/v1/characters";
+  const characterData = useCombinefetch(
+    "https://starwars-databank-server.vercel.app/api/v1/characters"
+  );
+  console.log("data", data.data);
 
-  const fetchCharacterPics = async () => {
-    try {
-      const response = await fetch(picUrl);
-      const data = await response.json();
-      // console.log("data", data);
-      const characterList = data.data as CharacterType[];
-      console.log("characterList", characterList);
-      setCharacters(characterList);
-    } catch (error) {
-      setError(true);
-      console.error("Error", error);
-    }
-  };
+  const { data, error, loading } = useCombinefetch(
+    "http https://swapi.dev/api/people/"
+  );
 
-  useEffect(() => {
-    fetchCharacterPics();
-  }, []);
-
-  return {};
-
-  //   return (
-  //     <div>
-  //       <h2>Characters</h2>
-  //       {error ? (
-  //         <p>Loading Error.</p>
-  //       ) : (
-  //         <ul>
-  //           {characters.map((character) => (
-  //             <li key={character.id}>{character.name}</li>
-  //           ))}
-  //         </ul>
-  //       )}
-  //     </div>
-  //   );
+  return <div>Fetching</div>;
 }
 
 export default Fetching;
