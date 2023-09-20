@@ -1,11 +1,9 @@
 import React from "react";
-import Fetching from "../components/Fetching";
-import useFetch from "../hooks/useFetch";
+// import useFetch from "../hooks/useFetch";
+import useCombinefetch from "../hooks/useCombinefetch";
 
-type Props = {};
-
-const Home = (props: Props) => {
-  const { characters, error, testVaribale } = useFetch();
+const Home = () => {
+  const { data, error, loading } = useCombinefetch();
   console.warn(characters);
   return <div>Home</div>;
 };
