@@ -3,8 +3,8 @@ import React from "react";
 import useCombinefetch from "../hooks/useCombinefetch";
 
 const Home = () => {
-  const { data, error, loading } = useCombinefetch();
-  console.warn(characters);
+  // const { data, error, loading } = useCombinefetch();
+  // console.warn(characters);
   return <div>Home</div>;
 };
 

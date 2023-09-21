@@ -1,17 +1,15 @@
-import React from 'react'
-import { Nav } from 'react-bootstrap'
-import MyNavbar from './MyNavbar'
-import { Outlet } from 'react-router-dom'
+import React from "react";
+import { Nav } from "react-bootstrap";
+import MyNavbar from "./MyNavbar";
+import { Outlet } from "react-router-dom";
 
-function MyRoot=(() => {
-    return (
-        <>
-            <MyNavbar />
-            <Outlet />
+const MyRoot: React.FC = () => {
+  return (
+    <>
+      <MyNavbar />
+      <Outlet />
+    </>
+  );
+};
 
-        </>
-    )
-
-})
-
-export default MyRoot
+export default MyRoot;

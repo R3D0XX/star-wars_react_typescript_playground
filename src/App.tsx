@@ -19,29 +19,28 @@ import Starships from "./pages/Starships";
 import Vehicles from "./pages/Vehicles";
 import ErrorPage from "./pages/ErrorPage";
 import MyRoot from "./components/MyRoot";
+import Registration from "./pages/Registration";
 
 function App() {
-  // const router = createBrowserRouter(
-
-  // createRoutesFromElements(
-  //   <Route path="/" element{} errorElement >
-  //     <Route path="Home" element={<Home/>}/>
-  //     <Route path="Movies" element={<Movies />} />
-  //     <Route path="People" element={<People />} />
-  //     <Route path="Planets" element={<Planets />} />
-  //     <Route path="Species" element={<Species />} />
-  //     <Route path="Starships" element={<Starships />} />
-  //     <Route path="Vehicles" element={<Vehicles />} />
-  //     <Route path="ErrorPage" element={<ErrorPage/>} />
-
-  //   </Route>
-  // )
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<MyRoot />} errorElement={<ErrorPage />}>
+        <Route index element={<Home />} />
+        <Route path="Movies" element={<Movies />} />
+        <Route path="People" element={<People />} />
+        <Route path="Planets" element={<Planets />} />
+        <Route path="Species" element={<Species />} />
+        <Route path="Starships" element={<Starships />} />
+        <Route path="Vehicles" element={<Vehicles />} />
+        <Route path="Registration" element={<Registration />} />
+      </Route>
+    )
+  );
 
   return (
     <>
-      {/* <RouterProvider router={router} />
-      
-      <Outlet/> */}
+      <RouterProvider router={router} />
+      <Outlet />
       <>
         <h1>Star-Wars</h1>
         <Home />

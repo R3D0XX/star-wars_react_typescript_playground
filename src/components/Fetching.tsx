@@ -5,7 +5,7 @@ function Fetching() {
   const characterData = useCombinefetch(
     "https://starwars-databank-server.vercel.app/api/v1/characters"
   );
-  console.log("data", data.data);
+  console.log("data", data);
 
   const { data, error, loading } = useCombinefetch(
     "http https://swapi.dev/api/people/"
