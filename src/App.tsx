@@ -20,19 +20,21 @@ import Vehicles from "./pages/Vehicles";
 import ErrorPage from "./pages/ErrorPage";
 import MyRoot from "./components/MyRoot";
 import Registration from "./pages/Registration";
+import Details from "./pages/Details";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MyRoot />} errorElement={<ErrorPage />}>
         <Route index element={<Home />} />
-        <Route path="Movies" element={<Movies />} />
-        <Route path="People" element={<People />} />
-        <Route path="Planets" element={<Planets />} />
-        <Route path="Species" element={<Species />} />
-        <Route path="Starships" element={<Starships />} />
-        <Route path="Vehicles" element={<Vehicles />} />
-        <Route path="Registration" element={<Registration />} />
+        <Route path="movies" element={<Movies />} />
+        <Route path="people" element={<People />} />
+        <Route path="people/:name" element={<Details />} />
+        <Route path="planets" element={<Planets />} />
+        <Route path="species" element={<Species />} />
+        <Route path="starships" element={<Starships />} />
+        <Route path="vehicles" element={<Vehicles />} />
+        <Route path="registration" element={<Registration />} />
       </Route>
     )
   );

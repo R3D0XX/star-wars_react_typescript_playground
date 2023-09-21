@@ -1,11 +1,25 @@
 import React from "react";
 import { useRouteError } from "react-router-dom";
 
-const ErrorPage = () => {
-  const error = useRouteError();
-  console.log("Error", Error);
+interface RouteErrorType {
+  data: string;
+  error: {
+    message: string;
+  };
+  status: number;
+  statusText: string;
+}
 
-  return <div>Something went wrong....</div>;
+const ErrorPage = () => {
+  const error = useRouteError() as RouteErrorType;
+  console.log("Error", error);
+
+  return (
+    <>
+      <h1>Something went wrong...</h1>
+      <h3>{error.error.message}</h3>
+    </>
+  );
 };
 
 export default ErrorPage;
