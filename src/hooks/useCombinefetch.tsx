@@ -1,58 +1,44 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface ReturnData<T> {
-  data: null | T;
+  data: T | null;
   loading: boolean;
-  error: string;
-}
-interface ErrorResponse {
-  error: string;
+  error: string | null;
 }
 
 function useCombinefetch<T>(url: string): ReturnData<T> {
-  const [data, setData] = useState<null | T>(null);
+  const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("second");
-
-  const fetchData = async (url: string) => {
-    try {
-      const response = await fetch(url);
-      if (response.ok) {
-        const result = (await response.json()) as T;
-        console.log("result un custom Hook :>> ", result);
-        setData(result);
-        setLoading(false);
-      } else {
-        const result = (await response.json()) as ErrorResponse;
-        setError(result.error);
-      }
-    } catch (e) {
-      console.log("error :>> ", e);
-      const { message } = e as Error;
-      setError(message);
-      setLoading(false);
-    }
-  };
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchData(url)
-      .catch((error) => {
-        console.log("error :>> ", error);
-        const { message } = error as Error;
-        setError(message);
-      })
-      .finally(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        if (response.ok) {
+          const result = (await response.json()) as T;
+          setData(result);
+          setError(null); // Reset error if the request is successful
+        } else {
+          const errorResponse = (await response.json()) as { error: string };
+          setError(errorResponse.error);
+        }
+      } catch (e) {
+        console.error("Error fetching data:", e);
+        setError("An error occurred while fetching data.");
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchData();
   }, [url]);
 
-  const returnObject = {
-    data: data,
-    error: error,
-    loading: loading,
+  return {
+    data,
+    loading,
+    error,
   };
-
-  return returnObject;
 }
 
 export default useCombinefetch;

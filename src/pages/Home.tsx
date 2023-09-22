@@ -1,11 +1,13 @@
 import React from "react";
-// import useFetch from "../hooks/useFetch";
-import useCombinefetch from "../hooks/useCombinefetch";
+// import useCombinefetch from "../hooks/useCombinefetch";
+import Fetching from "../components/Fetching";
 
 const Home = () => {
-  // const { data, error, loading } = useCombinefetch();
-  // console.warn(characters);
-  return <div>Home</div>;
+  return (
+    <>
+      <Fetching />
+    </>
+  );
 };
 
 export default Home;
