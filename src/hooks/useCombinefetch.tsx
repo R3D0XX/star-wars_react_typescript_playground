@@ -27,12 +27,13 @@ function useCombinefetch<T>(url: string): ReturnData<T> {
         console.error("Error fetching data:", e);
         setError("An error occurred while fetching data.");
       } finally {
+        // Set loading to false after the request is completed
         setLoading(false);
       }
     };
 
     fetchData();
-  }, [url]);
+  }, [url]); // Re-run the effect whenever the URL changes
 
   return {
     data,
