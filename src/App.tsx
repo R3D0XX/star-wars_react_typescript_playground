@@ -21,10 +21,10 @@ import ErrorPage from "./pages/ErrorPage";
 import MyRoot from "./components/MyRoot";
 import Registration from "./pages/Registration";
 import Details from "./pages/Details";
-import { app } from "./config/firebaseConfig";
+import { app, auth } from "./config/firebaseConfig";
 
 function App() {
-  console.log("app", app);
+  console.log("auth", auth);
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MyRoot />} errorElement={<ErrorPage />}>

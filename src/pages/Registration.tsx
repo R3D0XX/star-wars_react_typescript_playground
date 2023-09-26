@@ -1,3 +1,4 @@
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { Button } from "react-bootstrap";
 
@@ -14,6 +15,18 @@ const Registration = () => {
   };
   const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
   };
   // console.log('email, password', email, password)
 
