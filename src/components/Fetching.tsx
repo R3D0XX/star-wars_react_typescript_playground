@@ -1,6 +1,14 @@
 import React from "react";
 import useCombinefetch from "../hooks/useCombinefetch";
 
+// interface dataBank {
+//   data (
+//     id: string;
+//     name: string;
+//     description: string
+//     image: string)
+// }
+
 function Fetching() {
   const databankUrl =
     "https://starwars-databank-server.vercel.app/api/v1/characters";
@@ -21,6 +29,20 @@ function Fetching() {
   console.log("Characters Data", charactersData);
   console.log("SWAPI Data", swapiData);
 
+  //* To combine the information of the apis i need something like this!
+  //   const fetchSwappi = async () => {
+  //     const response = await fetch("asdasd");
+  //     const result = await response.json();
+  // //* try to figure out how to deep save the array, so i dont change the original array with the next step
+  //     const arrayOfObjects = result.map((character) => {
+  //       const responseDabank = await fetch("url...+character.name");
+  //       const resultDabank = await responseDabank.json();
+  //       const imageToadd = resultDabank.image;
+  //       const descriptionToAdd = resultDatabank.description;
+  //       return { ...character, image: imageToadd, description: descriptionToAdd };
+  //     });
+  //   };
+
   return (
     <div>
       {charactersLoading || swapiLoading ? (
@@ -28,8 +50,24 @@ function Fetching() {
       ) : charactersError || swapiError ? (
         "Error fetching data"
       ) : (
-        // Render your data here
-        <div>{/* Render charactersData and swapiData as needed */}</div>
+        <div>
+          <h2>Characters Data</h2>
+          <div>
+            {charactersData &&
+              charactersData.map((character, index) => (
+                <div key={index}>
+                  <img src={character.image} alt="Character" />
+                  <p>{character.description}</p>
+                </div>
+              ))}
+          </div>
+
+          <h2>SWAPI Data</h2>
+          <div>
+            {swapiData &&
+              swapiData.map((data, index) => <div key={index}>{}</div>)}
+          </div>
+        </div>
       )}
     </div>
   );

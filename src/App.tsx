@@ -21,12 +21,15 @@ import ErrorPage from "./pages/ErrorPage";
 import MyRoot from "./components/MyRoot";
 import Registration from "./pages/Registration";
 import Details from "./pages/Details";
+import { app } from "./config/firebaseConfig";
 
 function App() {
+  console.log("app", app);
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MyRoot />} errorElement={<ErrorPage />}>
         <Route index element={<Home />} />
+        <Route path="registration" element={<Registration />} />
         <Route path="movies" element={<Movies />} />
         <Route path="people" element={<People />} />
         <Route path="people/:name" element={<Details />} />

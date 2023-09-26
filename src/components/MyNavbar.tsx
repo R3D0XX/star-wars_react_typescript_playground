@@ -8,7 +8,8 @@ function MyNavbar() {
       <Link to="movies">Movies</Link> | <Link to="people">People</Link> |{" "}
       <Link to="planets">Planets</Link> | <Link to="species">Species</Link> |{" "}
       <Link to="starships">Starships</Link> |{" "}
-      <Link to="vehicles">Vehicles</Link> |
+      <Link to="vehicles">Vehicles</Link> |{" "}
+      <Link to="registratiom">Registration</Link>
     </nav>
   );
 }
