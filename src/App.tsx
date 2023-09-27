@@ -22,6 +22,7 @@ import MyRoot from "./components/MyRoot";
 import Registration from "./pages/Registration";
 import Details from "./pages/Details";
 import { app, auth } from "./config/firebaseConfig";
+import { AuthContextProvider } from "./contexct/AuthContext";
 
 function App() {
   console.log("auth", auth);
@@ -44,8 +45,10 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={router} />
-      <Outlet />
+      <AuthContextProvider>
+        <RouterProvider router={router} />
+        <Outlet />
+      </AuthContextProvider>
       <>
         <h1>Star-Wars</h1>
         <Home />
