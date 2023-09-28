@@ -8,9 +8,7 @@ type ProtectedRouteProps = {
 function ProtectedRoute({ children }: ProtectedRouteProps) {
   const { user } = useContext(AuthContext);
 
-  return (
-    <>{user ? props.children : <h2>Login/Register to see this content</h2>}</>
-  );
+  return <>{user ? children : <h2>Login/Register to see this content</h2>}</>;
 }
 
 export default ProtectedRoute;
