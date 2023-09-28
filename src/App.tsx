@@ -23,6 +23,8 @@ import Registration from "./pages/Registration";
 import Details from "./pages/Details";
 import { app, auth } from "./config/firebaseConfig";
 import { AuthContextProvider } from "./contexct/AuthContext";
+import Userhub from "./pages/Userhub";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   console.log("auth", auth);
@@ -39,6 +41,14 @@ function App() {
         <Route path="starships" element={<Starships />} />
         <Route path="vehicles" element={<Vehicles />} />
         <Route path="registration" element={<Registration />} />
+        <Route
+          path="userhub"
+          element={
+            <ProtectedRoute>
+              <Userhub />
+            </ProtectedRoute>
+          }
+        />
       </Route>
     )
   );
