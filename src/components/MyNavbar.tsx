@@ -15,6 +15,7 @@ function MyNavbar() {
       <Link to="starships">Starships</Link> |{" "}
       <Link to="vehicles">Vehicles</Link> |{" "}
       <Link to="registration">Registration</Link> |{" "}
+      {user && <Link to="userhub">User Hub</Link>}|{" "}
       <Link to="login">Login</Link>
       {user ? (
         <Button variant="danger" onClick={logout}>

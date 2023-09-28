@@ -69,7 +69,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         // https://firebase.google.com/docs/reference/js/auth.user
         const uid = user.uid;
         console.log("user is still logged in");
-        console.log("uid", uid);
+        // console.log("uid", uid);
         setUser(user);
       } else {
         console.log("user is logged out");

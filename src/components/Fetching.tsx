@@ -26,8 +26,8 @@ function Fetching() {
     loading: swapiLoading,
   } = useCombinefetch(swapiUrl);
 
-  console.log("Characters Data", charactersData);
-  console.log("SWAPI Data", swapiData);
+  // console.log("Characters Data", charactersData);
+  // console.log("SWAPI Data", swapiData);
 
   //* To combine the information of the apis i need something like this!
   //   const fetchSwappi = async () => {
@@ -54,9 +54,13 @@ function Fetching() {
           <h2>Characters Data</h2>
           <div>
             {charactersData &&
-              charactersData.map((character, index) => (
+              charactersData.data.map((character, index) => (
                 <div key={index}>
-                  <img src={character.image} alt="Character" />
+                  <img
+                    src={character.image}
+                    style={{ width: "100px" }}
+                    alt="Character"
+                  />
                   <p>{character.description}</p>
                 </div>
               ))}
@@ -64,8 +68,12 @@ function Fetching() {
 
           <h2>SWAPI Data</h2>
           <div>
+            {console.log("swapiData", swapiData)}
+
             {swapiData &&
-              swapiData.map((data, index) => <div key={index}>{}</div>)}
+              swapiData.results.map((data, index) => (
+                <div key={index}>{data.name}</div>
+              ))}
           </div>
         </div>
       )}
