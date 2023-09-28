@@ -5,7 +5,7 @@ type ProtectedRouteProps = {
   children: ReactNode;
 };
 
-function ProtectedRoute(props) {
+function ProtectedRoute({ children }: ProtectedRouteProps) {
   const { user } = useContext(AuthContext);
 
   return (

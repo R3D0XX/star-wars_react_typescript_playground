@@ -2,8 +2,8 @@ import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { Button } from "react-bootstrap";
 import { AuthContext } from "../contexct/AuthContext";
 
-function Registration() {
-  const { register } = useContext(AuthContext);
+function Login() {
+  const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,24 +14,24 @@ function Registration() {
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-  const handleRegister = (e: FormEvent<HTMLFormElement>) => {
+  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    register(email, password);
+    login(email, password);
   };
   // console.log('email, password', email, password)
 
   return (
     <>
-      <h1>Registration</h1>
-      <form onSubmit={handleRegister}>
+      <h1>Login</h1>
+      <form onSubmit={handleLogin}>
         <input type="text" id="email" onChange={handleEmailChange} />
         <label htmlFor="email">Email</label>
         <input type="text" id="passwort" onChange={handlePasswordChange} />
         <label htmlFor="password">Password</label>
-        <Button type="submit">Register</Button>
+        <Button type="submit">Login</Button>
       </form>
     </>
   );
 }
 
-export default Registration;
+export default Login;

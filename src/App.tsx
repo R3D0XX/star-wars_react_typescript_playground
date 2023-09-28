@@ -25,6 +25,7 @@ import { app, auth } from "./config/firebaseConfig";
 import { AuthContextProvider } from "./contexct/AuthContext";
 import Userhub from "./pages/Userhub";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Login from "./pages/Login";
 
 function App() {
   console.log("auth", auth);
@@ -41,6 +42,7 @@ function App() {
         <Route path="starships" element={<Starships />} />
         <Route path="vehicles" element={<Vehicles />} />
         <Route path="registration" element={<Registration />} />
+        <Route path="login" element={<Login />} />
         <Route
           path="userhub"
           element={
