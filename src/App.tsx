@@ -21,14 +21,15 @@ import ErrorPage from "./pages/ErrorPage";
 import MyRoot from "./components/MyRoot";
 import Registration from "./pages/Registration";
 import Details from "./pages/Details";
-import { app, auth } from "./config/firebaseConfig";
+import { app, auth, db } from "./config/firebaseConfig";
 import { AuthContextProvider } from "./contexct/AuthContext";
 import Userhub from "./pages/Userhub";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
+import Favorites from "./pages/Favorites";
 
 function App() {
-  console.log("auth", auth);
+  // console.log("db", db);
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MyRoot />} errorElement={<ErrorPage />}>
@@ -48,6 +49,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Userhub />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="favorites"
+          element={
+            <ProtectedRoute>
+              <Favorites />
             </ProtectedRoute>
           }
         />

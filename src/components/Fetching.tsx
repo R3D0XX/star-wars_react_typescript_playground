@@ -68,7 +68,7 @@ function Fetching() {
 
           <h2>SWAPI Data</h2>
           <div>
-            {console.log("swapiData", swapiData)}
+            {/* {console.log("swapiData", swapiData)} */}
 
             {swapiData &&
               swapiData.results.map((data, index) => (

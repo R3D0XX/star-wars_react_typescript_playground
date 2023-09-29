@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 
 function MyNavbar() {
   const { user, setUser, logout } = useContext(AuthContext);
-  console.log("user", user);
+  // console.log("user", user);
 
   return (
     <nav>
@@ -16,7 +16,7 @@ function MyNavbar() {
       <Link to="vehicles">Vehicles</Link> |{" "}
       <Link to="registration">Registration</Link> |{" "}
       {user && <Link to="userhub">User Hub</Link>}|{" "}
-      <Link to="login">Login</Link>
+      <Link to="favorites">Favorites</Link>|<Link to="login">Login</Link>
       {user ? (
         <Button variant="danger" onClick={logout}>
           Logout{" "}
