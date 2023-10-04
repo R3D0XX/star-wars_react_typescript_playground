@@ -2,12 +2,13 @@ import React from "react";
 import MyRealNavbar from "../components/MyNavbar";
 import Fetching from "../components/Fetching";
 
-const Species = () => {
+function Locations() {
   return (
     <div>
-      <h2>Species</h2>
+      <h2>Locations</h2>
+      {/* <MyRealNavbar /> */}
     </div>
   );
-};
+}
 
-export default Species;
+export default Locations;

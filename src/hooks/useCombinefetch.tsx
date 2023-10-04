@@ -14,17 +14,18 @@ function useCombinefetch<T>(url: string): ReturnData<T> {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log("url to fetch", url);
         const response = await fetch(url);
         if (response.ok) {
           const result = (await response.json()) as T;
           setData(result);
           setError(null); // Reset error if the request is successful
         } else {
-          const errorResponse = (await response.json()) as { error: string };
-          setError(errorResponse.error);
+          const errorResponse = (await response.json()) as { message: string };
+          setError(errorResponse.message);
         }
       } catch (e) {
-        console.error("Error fetching data:", e);
+        // console.error("Error fetching data:", e);
         setError("An error occurred while fetching data.");
       } finally {
         // Set loading to false after the request is completed

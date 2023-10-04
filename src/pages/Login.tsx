@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { Button } from "react-bootstrap";
 import { AuthContext } from "../contexct/AuthContext";
+import MyRealNavbar from "../components/MyNavbar";
 
 function Login() {
   const { login } = useContext(AuthContext);
@@ -30,6 +31,7 @@ function Login() {
         <label htmlFor="password">Password</label>
         <Button type="submit">Login</Button>
       </form>
+      {/* <MyRealNavbar /> */}
     </>
   );
 }

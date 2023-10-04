@@ -8,14 +8,12 @@ import {
 } from "react-router-dom";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import MyCard from "./components/MyCard";
 import Home from "./pages/Home";
-import Movies from "./pages/Movies";
 import People from "./pages/People";
-import Planets from "./pages/Planets";
 import Species from "./pages/Species";
-import Starships from "./pages/Starships";
 import Vehicles from "./pages/Vehicles";
 import ErrorPage from "./pages/ErrorPage";
 import MyRoot from "./components/MyRoot";
@@ -26,7 +24,13 @@ import { AuthContextProvider } from "./contexct/AuthContext";
 import Userhub from "./pages/Userhub";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
-import Favorites from "./pages/Favorites";
+import Favourites from "./pages/Favorites";
+import Droids from "./pages/Droids";
+import Locations from "./pages/Locations";
+import Creatures from "./pages/Creatures";
+import Organisations from "./pages/Organisations";
+import MyRealNavbar from "./components/MyNavbar";
+import Fetching from "./components/Fetching";
 
 function App() {
   // console.log("db", db);
@@ -35,15 +39,45 @@ function App() {
       <Route path="/" element={<MyRoot />} errorElement={<ErrorPage />}>
         <Route index element={<Home />} />
         <Route path="registration" element={<Registration />} />
-        <Route path="movies" element={<Movies />} />
-        <Route path="people" element={<People />} />
-        <Route path="people/:name" element={<Details />} />
-        <Route path="planets" element={<Planets />} />
-        <Route path="species" element={<Species />} />
-        <Route path="starships" element={<Starships />} />
-        <Route path="vehicles" element={<Vehicles />} />
+
+        <Route path="people">
+          <Route index element={<People />} />
+          <Route path=":name" element={<Details />} />{" "}
+        </Route>
+
+        <Route path="droids">
+          <Route index element={<Droids />} />
+          <Route path=":name" element={<Details />} />{" "}
+        </Route>
+
+        <Route path="vehicles">
+          <Route index element={<Vehicles />} />
+          <Route path=":name" element={<Details />} />{" "}
+        </Route>
+
+        <Route path="species">
+          <Route index element={<Species />} />
+          <Route path=":name" element={<Details />} />
+        </Route>
+
+        <Route path="organisations">
+          <Route index element={<Organisations />} />
+          <Route path=":name" element={<Details />} />
+        </Route>
+
+        <Route path="locations">
+          <Route index element={<Locations />} />
+          <Route path=":name" element={<Details />} />
+        </Route>
+
+        <Route path="creatures">
+          <Route index element={<Creatures />} />
+          <Route path=":name" element={<Details />} />
+        </Route>
+
         <Route path="registration" element={<Registration />} />
         <Route path="login" element={<Login />} />
+
         <Route
           path="userhub"
           element={
@@ -53,10 +87,10 @@ function App() {
           }
         />
         <Route
-          path="favorites"
+          path="favourites"
           element={
             <ProtectedRoute>
-              <Favorites />
+              <Favourites />
             </ProtectedRoute>
           }
         />
@@ -65,16 +99,13 @@ function App() {
   );
 
   return (
-    <>
-      <AuthContextProvider>
-        <RouterProvider router={router} />
-        <Outlet />
-      </AuthContextProvider>
-      <>
-        <h1>Star-Wars</h1>
-        <Home />
-      </>
-    </>
+    <AuthContextProvider>
+      <RouterProvider router={router} />
+
+      <Outlet />
+      {/* <MyRealNavbar /> */}
+      {/* <Fetching /> */}
+    </AuthContextProvider>
   );
 }
 

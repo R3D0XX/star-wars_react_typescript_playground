@@ -6,7 +6,6 @@ import { Outlet } from "react-router-dom";
 const MyRoot: React.FC = () => {
   return (
     <>
-      <MyNavbar />
       <Outlet />
     </>
   );

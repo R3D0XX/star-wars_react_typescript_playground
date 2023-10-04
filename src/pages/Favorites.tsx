@@ -2,7 +2,7 @@ import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect } from "react";
 import { db } from "../config/firebaseConfig";
 
-function Favorites() {
+function Favourites() {
   const getFavorites = async () => {
     const querySnapshot = await getDocs(collection(db, "Favorites"));
     querySnapshot.forEach((doc) => {
@@ -15,10 +15,11 @@ function Favorites() {
   }),
     [];
 
-  return;
-  <div>
-    <h2> Your Favorites</h2>
-  </div>;
+  return (
+    <div>
+      <h2> Your Favorites</h2>
+    </div>
+  );
 }
 
-export default Favorites;
+export default Favourites;
