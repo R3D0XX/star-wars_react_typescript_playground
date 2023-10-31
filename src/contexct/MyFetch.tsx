@@ -103,9 +103,7 @@ function MyFetch() {
       loading: charactersLoading,
     } = useCombinefetch(databankUrl);
 
-    const fetchData = (category: string, name?: string) => {
-      // Implementieren Sie hier die Logik zum Aktualisieren der Daten basierend auf der Kategorie und dem Namen
-    };
+    const fetchData = (category: string, name?: string) => {};
 
     const contextValue: FetchingContextData = {
       data: charactersData ? charactersData.data : null,
